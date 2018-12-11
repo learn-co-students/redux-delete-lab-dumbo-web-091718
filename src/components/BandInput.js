@@ -14,7 +14,8 @@ class BandInput extends Component {
 
   handleOnSubmit(event) {
     event.preventDefault();
-    this.props.addBand(this.state.bandName);
+    let band = Object.assign({}, this.state, {id: Math.random()*10000})
+    this.props.addBand(band);
     this.setState({
       bandName: '',
     });
@@ -26,7 +27,7 @@ class BandInput extends Component {
         <form onSubmit={(event) => this.handleOnSubmit(event)}>
           <input
             type="text"
-            value={this.state.text}
+            value={this.state.bandName}
             onChange={(event) => this.handleOnChange(event)} />
           <input type="submit" />
         </form>
